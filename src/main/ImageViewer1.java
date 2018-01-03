@@ -10,11 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class ImageViewer1 {
 
     static List<ImageIcon> imageList;
-    static File dir = new File("J:\\Users\\Gustavo\\TODO"); //ruta por defecto, se puede cambiar en el Frame.
+    static File dir;    
     static String imageName;
     static ImageIcon image;
     static Image aux;
@@ -34,10 +35,20 @@ public class ImageViewer1 {
     };
 
     public static void main(String[] args) {
-        imageList = getImages(dir);
-        System.out.println(imageList.size());
-        ImageViewerUI UI = new ImageViewerUI();
-        UI.setVisible(true);
+        while(true){
+            dir = new File(JOptionPane.showInputDialog(null, "Directorio a abrir"));    
+            try{
+                if(dir.isDirectory()){
+                    imageList = getImages(dir);
+                    ImageViewerUI UI = new ImageViewerUI();
+                    UI.setVisible(true);
+                    break;
+                }    
+            }catch(Exception e){
+            }    
+        }
+        
+       
     }
     
     public static List<ImageIcon> getImages(File dir){
