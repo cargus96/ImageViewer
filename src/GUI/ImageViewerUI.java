@@ -146,10 +146,9 @@ public class ImageViewerUI extends javax.swing.JFrame {
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Directorio no existente", "Advertencia", JOptionPane.WARNING_MESSAGE);
             path = aux;
-            imageList = imageListaux;             
             index = indexaux;
-            jLabel1.setIcon(imageList.get(index));
-           
+            imageList = imageListaux;             
+            jLabel1.setIcon(imageList.get(index));           
         }
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
