@@ -135,18 +135,21 @@ public class ImageViewerUI extends javax.swing.JFrame {
     }//GEN-LAST:event_AdelanteActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        String aux =  ImageViewer1.getDir();
+        String aux =  path;
         int indexaux = index;
+        List<ImageIcon> imageListaux = imageList;
         try{
-            String dir = JOptionPane.showInputDialog(this, "Directorio");
-            imageList = getImages(new File(dir));
+            path = JOptionPane.showInputDialog(this, "Directorio");            
+            imageList = ImageViewer1.getImages(new File(path));
             index=0;
             jLabel1.setIcon(imageList.get(index));
         }catch(Exception e){
-            imageList = getImages(new File(aux)); 
+            JOptionPane.showMessageDialog(null, "Directorio no existente", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            path = aux;
+            imageList = imageListaux;             
             index = indexaux;
             jLabel1.setIcon(imageList.get(index));
-            JOptionPane.showMessageDialog(null, "Directorio no existente", "Advertencia", JOptionPane.WARNING_MESSAGE);
+           
         }
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed

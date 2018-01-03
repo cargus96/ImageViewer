@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 public class ImageViewer1 {
 
     static List<ImageIcon> imageList;
-    static File dir = new File("J:\\Users\\Gustavo\\Wallpapers"); //ruta por defecto, se puede cambiar en el Frame.
+    static File dir = new File("J:\\Users\\Gustavo\\TODO"); //ruta por defecto, se puede cambiar en el Frame.
     static String imageName;
     static ImageIcon image;
     static Image aux;
