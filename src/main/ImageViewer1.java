@@ -13,20 +13,17 @@ import javax.swing.ImageIcon;
 
 public class ImageViewer1 {
 
-    // File representing the folder that you select using a FileChooser
     static List<ImageIcon> imageList;
-    static File dir = new File("J:\\Users\\Gustavo\\TODO");
+    static File dir = new File("J:\\Users\\Gustavo\\Wallpapers"); //ruta por defecto, se puede cambiar en el Frame.
     static String imageName;
     static ImageIcon image;
     static Image aux;
     static double aux2;
     static int newW, newH;
 
-    // array of supported extensions (use a List if you prefer)
     static final String[] EXTENSIONS = new String[]{
-        "gif", "png", "bmp", "jpg" // and other formats you need
+        "gif", "png", "bmp", "jpg" ,"jpeg"
     };
-    // filter to identify images based on their extensions
     static FilenameFilter IMAGE_FILTER = (final File dir1, final String name) -> {
         for (final String ext : EXTENSIONS) {
             if (name.endsWith("." + ext)) {
@@ -45,15 +42,12 @@ public class ImageViewer1 {
     
     public static List<ImageIcon> getImages(File dir){
         imageList = new ArrayList<>();
-        if (dir.isDirectory()) { // make sure it's a directory
+        if (dir.isDirectory()) {
             for (final File f : dir.listFiles(IMAGE_FILTER)) {
                 BufferedImage img;
 
                 try {
                     img = ImageIO.read(f);
-
-                    // you probably want something more involved here
-                    // to display in your UI
                     imageName = f.getName();
                     image = new ImageIcon(dir + "\\" + imageName);
                     boolean mod = false;
@@ -79,11 +73,9 @@ public class ImageViewer1 {
                         image = new ImageIcon(aux);
                     }
                     imageList.add(image);
-                    //Ver reescalado con clase image
                     
                     
                 } catch (final IOException e) {
-                    // handle errors here
                 }
             }
         }
